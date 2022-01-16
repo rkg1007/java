@@ -4,16 +4,12 @@ import java.util.Scanner;
 
 public class MajorityElement {
   public static int majorityElement(int[] nums) {
-    int res = nums[0], freq = 1;
+    int candidate = nums[0], count = 1;
     for (int i = 1; i < nums.length; i++) {
-      if (freq == 0 || res == nums[i]) {
-        res = nums[i];
-        freq++;
-      } else {
-        freq--;
-      }
+      candidate = (count == 0) ? nums[i] : candidate;
+      count += (candidate == nums[i]) ? 1 : -1;
     }
-    return res;
+    return candidate;
   }
 
   public static void main(String[] args) {
